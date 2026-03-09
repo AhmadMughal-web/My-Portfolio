@@ -1,0 +1,112 @@
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+
+.skill-card {
+  background: var(--glass);
+  border-radius: 20px;
+  padding: 32px 18px;
+  text-align: center;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease;
+  will-change: transform;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.skill-card:hover {
+  background: rgba(0, 247, 255, 0.03);
+  border: 1px solid transparent;
+  box-shadow:
+    0 0 0 1px rgba(0, 247, 255, 0.6),
+    0 0 20px rgba(0, 247, 255, 0.2);
+}
+
+
+
+.sk-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 85%, rgba(0, 247, 255, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.skill-card:hover .sk-glow {
+  opacity: 1;
+}
+
+.sk-icon {
+  font-size: 2.6rem;
+  margin-bottom: 13px;
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.4s var(--ease);
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-card:hover .sk-icon {
+  transform: scale(1.18) translateY(-4px);
+}
+
+.skill-card span {
+  font-family: var(--font-d);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  transition: color 0.4s;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-card:hover span {
+  color: white;
+}
+
+.stack-note {
+  max-width: 920px;
+  margin: 28px auto 0;
+  padding: 16px 22px;
+  background: rgba(0, 247, 255, 0.04);
+  border: 1px solid rgba(0, 247, 255, 0.15);
+  border-radius: 14px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stack-note i {
+  color: var(--cyan);
+}
+
+.stack-note strong {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,7 @@
+.footer {
+  text-align: center; padding: 46px 8%;
+  border-top: 1px solid var(--gb);
+  position: relative; z-index: 2;
+}
+.footer p { color: var(--muted); font-size: 0.84rem; }
+.footer-sub { margin-top: 6px; font-size: 0.74rem; opacity: 0.8; }

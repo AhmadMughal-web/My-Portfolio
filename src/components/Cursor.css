@@ -1,0 +1,25 @@
+.c-dot {
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan);
+}
+
+.c-ring {
+  width: 32px; height: 32px;
+  border: 1.5px solid rgba(0, 247, 255, 0.45);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.c-ring.hov {
+  width: 52px; height: 52px;
+  background: rgba(0, 247, 255, 0.05);
+  border-color: var(--purple);
+}

@@ -1,0 +1,199 @@
+/* =============================================
+   GLOBAL — variables, reset, shared classes
+============================================= */
+:root {
+  --cyan: #00f7ff;
+  --purple: #a855f7;
+  --blue: #3b82f6;
+  --bg: #020408;
+  --glass: rgba(255, 255, 255, 0.04);
+  --gb: rgba(255, 255, 255, 0.08);
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-d: 'Syne', sans-serif;
+  --font-b: 'DM Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  cursor: none !important;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* =======Heading Edit =======*/
+
+.sec-title span {
+  position: relative;
+  display: inline-block;
+}
+
+/*===== Message ========*/
+
+.contact-hl span {
+  position: relative;
+  display: inline-block;
+}
+
+.contact-hl span::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
+  background-size: 200% 100%;
+  animation: borderSlide 3s linear infinite;
+  box-shadow: 0 0 8px rgba(0, 247, 255, 0.4);
+}
+
+/*===== end ========*/
+
+
+.sec-title span::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan), var(--purple));
+  background-size: 200% 100%;
+  animation: borderSlide 3s linear infinite;
+}
+
+@keyframes borderSlide {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Gradient text */
+.grad {
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section shared */
+.section {
+  padding: 80px 8% 120px;
+  position: relative;
+  z-index: 2;
+}
+
+.sec-label {
+  font-family: var(--font-d);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+
+.sec-title {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: white;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.sec-sub {
+  font-size: 0.96rem;
+  color: var(--muted);
+  margin-bottom: 60px;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(55px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+
+.reveal.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: 99px;
+  font-family: var(--font-d);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.35s var(--ease);
+  cursor: none;
+  border: none;
+}
+
+.btn-p {
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  color: #020408;
+}
+
+.btn-p:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 247, 255, 0.4), 0 0 60px rgba(168, 85, 247, 0.2);
+}
+
+.btn-g {
+  background: var(--glass);
+  border: 1px solid var(--gb);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.btn-g:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 247, 255, 0.15);
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 6%;
+  }
+}
