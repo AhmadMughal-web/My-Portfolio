@@ -24,6 +24,8 @@ export default function Chatbot() {
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [msgs]);
 
+    const API_KEY = 'TUMHARI_GEMINI_KEY_YAHAN';
+
     const send = async () => {
         if (!input.trim() || loading) return;
         const userMsg = { role: 'user', content: input.trim() };
@@ -33,15 +35,24 @@ export default function Chatbot() {
         setLoading(true);
 
         try {
-            const res = await fetch('/.netlify/functions/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    messages: newMsgs,
-                }),
-            });
+            const geminiMsgs = newMsgs.map(m => ({
+                role: m.role === 'assistant' ? 'model' : 'user',
+                parts: [{ text: m.content }]
+            }));
+
+            const res = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        system_instruction: { parts: [{ text: SYSTEM }] },
+                        contents: geminiMsgs,
+                    }),
+                }
+            );
             const data = await res.json();
-            const reply = data.content?.[0]?.text || 'Sorry, something went wrong!';
+            const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, try again!';
             setMsgs(prev => [...prev, { role: 'assistant', content: reply }]);
         } catch {
             setMsgs(prev => [...prev, { role: 'assistant', content: 'Network error. Please try again!' }]);
