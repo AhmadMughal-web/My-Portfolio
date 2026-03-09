@@ -24,7 +24,7 @@ export default function Chatbot() {
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [msgs]);
 
-    const API_KEY = 'AIzaSyCEKDOOym_Suu7rHaK8NumzmXtUhaQpIMA';
+    const API_KEY = process.env.REACT_APP_GEMINI_KEY;
 
     const send = async () => {
         if (!input.trim() || loading) return;
@@ -41,7 +41,7 @@ export default function Chatbot() {
             }));
 
             const res = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
