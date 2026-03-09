@@ -24,7 +24,7 @@ export default function Chatbot() {
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [msgs]);
 
-    const API_KEY = 'TUMHARI_GEMINI_KEY_YAHAN';
+    const API_KEY = 'AIzaSyCEKDOOym_Suu7rHaK8NumzmXtUhaQpIMA';
 
     const send = async () => {
         if (!input.trim() || loading) return;
